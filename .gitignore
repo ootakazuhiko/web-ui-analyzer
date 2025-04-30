@@ -1,0 +1,65 @@
+# Node.js 関連
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# 環境設定ファイル
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# キャプチャ結果ディレクトリ
+captures/
+captures_pw/
+
+# ログファイル
+*.log
+
+# テスト結果
+coverage/
+
+# エディタ設定ファイル
+.vscode/
+.idea/
+*.sublime-*
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS生成ファイル
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Playwrightの一時ファイル
+playwright/.cache/
+test-results/
+
+# トレースファイル (必要に応じてコメントアウト)
+# *.zip
+
+# 一時ファイル
+tmp/
+temp/
+
+# 個人的な設定
+config/local.js
+
+# ビルド生成物
+dist/
+build/
