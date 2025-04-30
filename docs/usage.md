@@ -28,12 +28,12 @@ yarn install
 
 ## 3. 設定ファイルの確認
 
-### 3.1 `config.js`の確認
+### 3.1 `config/default.js`の確認
 
-`config.js`ファイルを確認して、分析対象のWebシステムのURLを設定します：
+`config/default.js`ファイルを確認して、分析対象のWebシステムのURLを設定します：
 
 ```javascript
-// config.js
+// config/default.js
 module.exports = {
   // WebシステムのベースURL
   baseUrl: 'http://your-web-system.com', // 実際のWebシステムURLに変更
@@ -70,13 +70,43 @@ module.exports = {
 ### 4.1 Puppeteer版の実行
 
 ```bash
-node ui-capture-puppeteer.js
+node src/capture/puppeteer.js
 ```
 
 ### 4.2 Playwright版の実行
 
 ```bash
-node ui-capture-playwright.js
+node src/capture/playwright.js
+```
+
+### 4.3 サンプルワークフローの実行
+
+分析を始める前に、いくつかのサンプルワークフローを実行して、ツールの使用方法を学ぶことができます：
+
+```bash
+# サンプルワークフロー選択メニューを実行
+node examples/workflows/index.js
+```
+
+以下の3種類のサンプルワークフローから選択できます：
+
+1. **Eコマースサイト購入フロー** - 商品選択から購入までの典型的な流れを分析
+2. **レイアウト分析特化ワークフロー** - UIの一貫性やレイアウトパターンを詳細に分析
+3. **アクセシビリティ監査ワークフロー** - アクセシビリティ問題の検出に重点を置いた分析
+
+各サンプルは手動操作が必要ですが、分析の目的に応じた最適な設定と、結果の見方に関するガイダンスを提供します。
+
+特定のサンプルを直接実行することもできます：
+
+```bash
+# Eコマースフローを直接実行
+node examples/workflows/ecommerce-flow.js
+
+# レイアウト分析を直接実行
+node examples/workflows/layout-analysis-flow.js
+
+# アクセシビリティ監査を直接実行
+node examples/workflows/accessibility-audit-flow.js
 ```
 
 ## 5. 手動操作による分析方法
@@ -422,6 +452,43 @@ await fs.writeFile(metricsPath, JSON.stringify(performanceMetrics, null, 2));
 async function generateCompleteReport(workflowName) {
   const captureDir = path.join(__dirname, 'captures', workflowName);
   // レポート生成ロジック
+}
+```
+
+### 10.3 サンプルワークフローのカスタマイズ
+
+`examples/workflows` ディレクトリにあるサンプルを参考に、独自のワークフローを作成できます。基本的には以下の手順で実装します：
+
+1. 新しいJavaScriptファイルを作成（例：`my-custom-workflow.js`）
+2. `captureWorkflow`関数と`runAnalysis`関数を利用して処理を実装
+3. 必要に応じて特定の目的に合わせたブラウザオプションを設定
+
+例：
+
+```javascript
+const { captureWorkflow } = require('../../src/capture/playwright');
+const { runAnalysis } = require('../../src/analysis/analyze');
+
+async function runMyCustomWorkflow() {
+  // カスタムオプションの設定
+  const options = {
+    headless: false,
+    viewportSize: { width: 1600, height: 900 }
+  };
+  
+  // ワークフロー実行
+  const result = await captureWorkflow('https://your-target-site.com', 'my_custom_workflow', options);
+  
+  if (result.success) {
+    // 分析実行
+    await runAnalysis(result.outputDir);
+    console.log('カスタムワークフローの分析が完了しました');
+  }
+}
+
+// 実行
+if (require.main === module) {
+  runMyCustomWorkflow().catch(console.error);
 }
 ```
 
