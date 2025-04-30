@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "playwright": "^1.35.0",
-    "puppeteer": "^20.5.0"
+    "puppeteer": "^24.7.2"
   },
   "engines": {
     "node": ">=14.0.0"
