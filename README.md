@@ -18,7 +18,7 @@ Web UI Analyzerは、Webシステムのユーザーインターフェースを�
 ## インストール
 
 ```bash
-git clone https://github.com/あなたのユーザー名/web-ui-analyzer.git
+git clone git@github.com:ootakazuhiko/web-ui-analyzer.git
 cd web-ui-analyzer
 npm install
 ```
