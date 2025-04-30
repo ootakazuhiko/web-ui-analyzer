@@ -35,25 +35,32 @@ async function createOutputDir(dirPath) {
 }
 
 // Webシステムのワークフロー収集（手動操作版）
-async function captureWorkflow(baseUrl, workflowName) {
+async function captureWorkflow(baseUrl, workflowName, options = {}) {
   // 出力ディレクトリ
-  const outputDir = path.join(__dirname, 'captures_pw', workflowName);
+  const rootDir = path.resolve(__dirname, '..', '..');
+  const outputDir = path.join(rootDir, 'captures_pw', workflowName);
   await createOutputDir(outputDir);
+  
+  // ブラウザの設定
+  const headless = options.headless !== undefined ? options.headless : false;
+  const viewportSize = options.viewportSize || { width: 1280, height: 800 };
   
   // ブラウザ起動
   const browser = await chromium.launch({ 
-    headless: false // 可視化
+    headless: headless
   });
   
   const context = await browser.newContext({
-    viewport: { width: 1280, height: 800 },
-    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    viewport: viewportSize,
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
   });
   
-  // トレース記録を開始
+  // トレース記録を開始（スクリーンショット、スナップショットに加えてネットワークも記録）
   await context.tracing.start({ 
     screenshots: true, 
-    snapshots: true 
+    snapshots: true,
+    sources: true,
+    title: workflowName
   });
   
   const page = await context.newPage();
@@ -62,7 +69,7 @@ async function captureWorkflow(baseUrl, workflowName) {
     // トップページにアクセス
     console.log('\n==== UI分析ツール（手動操作版 - Playwright）====');
     console.log(`トップページにアクセスしています: ${baseUrl}`);
-    await page.goto(baseUrl);
+    await page.goto(baseUrl, { waitUntil: 'networkidle' });
     
     console.log('\n手動ログインを行ってください');
     console.log('メールアドレスとパスワードを入力し、ログインボタンをクリックしてください');
@@ -96,8 +103,16 @@ async function captureWorkflow(baseUrl, workflowName) {
     await context.tracing.stop({ path: path.join(outputDir, 'trace.zip') });
     
     console.log('\nワークフロー収集完了');
+    return { success: true, stepCount: stepCounter, outputDir };
   } catch (error) {
     console.error('エラーが発生しました:', error);
+    // エラー発生時でもトレースを保存
+    try {
+      await context.tracing.stop({ path: path.join(outputDir, 'error_trace.zip') });
+    } catch (traceError) {
+      console.error('トレース保存中にエラーが発生しました:', traceError);
+    }
+    return { success: false, error: error.message };
   } finally {
     await browser.close();
   }
@@ -130,20 +145,56 @@ async function collectScreenData(page, outputDir, stepCounter, description) {
     
     // 3. 要素レイアウト情報
     const layoutInfo = await page.evaluate(() => {
+      function getComputedStyleObject(element) {
+        const style = window.getComputedStyle(element);
+        return {
+          position: style.position,
+          display: style.display,
+          width: style.width,
+          height: style.height,
+          color: style.color,
+          backgroundColor: style.backgroundColor,
+          fontSize: style.fontSize,
+          fontFamily: style.fontFamily,
+          padding: style.padding,
+          margin: style.margin,
+          border: style.border,
+          borderRadius: style.borderRadius,
+          boxShadow: style.boxShadow,
+          zIndex: style.zIndex,
+          opacity: style.opacity,
+          visibility: style.visibility
+        };
+      }
+      
       const allElements = Array.from(document.querySelectorAll('*'));
-      return allElements.slice(0, 1000).map(el => {
+      return allElements.slice(0, 2000).map(el => {
         const rect = el.getBoundingClientRect();
+        const attributes = {};
+        
+        // 要素の属性を収集
+        for (const attr of el.attributes) {
+          attributes[attr.name] = attr.value;
+        }
+        
         return {
           tag: el.tagName,
-          id: el.id,
-          className: el.className,
-          text: el.innerText?.substring(0, 100),
+          id: el.id || '',
+          className: el.className || '',
+          attributes,
+          textContent: el.innerText?.substring(0, 200) || '',
+          isVisible: rect.width > 0 && rect.height > 0,
           rect: {
             x: rect.x,
             y: rect.y,
             width: rect.width,
-            height: rect.height
-          }
+            height: rect.height,
+            top: rect.top,
+            right: rect.right,
+            bottom: rect.bottom,
+            left: rect.left
+          },
+          computedStyle: getComputedStyleObject(el)
         };
       });
     });
@@ -194,6 +245,27 @@ async function collectScreenData(page, outputDir, stepCounter, description) {
     await fs.writeFile(urlPath, JSON.stringify(urlInfo, null, 2));
     console.log(`URL情報保存: ${urlPath}`);
     
+    // 7. パフォーマンスメトリクスの収集 (Playwrightの機能を使用)
+    const performanceMetrics = await page.evaluate(() => {
+      if (window.performance && window.performance.getEntriesByType) {
+        const navigationEntries = window.performance.getEntriesByType('navigation');
+        const resourceEntries = window.performance.getEntriesByType('resource');
+        
+        return {
+          navigation: navigationEntries.length > 0 ? navigationEntries[0] : null,
+          resources: resourceEntries.slice(0, 50), // 最初の50リソースのみ
+          timing: window.performance.timing
+        };
+      }
+      return null;
+    });
+    
+    if (performanceMetrics) {
+      const performancePath = path.join(outputDir, `step${stepCounter}_performance.json`);
+      await fs.writeFile(performancePath, JSON.stringify(performanceMetrics, null, 2));
+      console.log(`パフォーマンス情報保存: ${performancePath}`);
+    }
+    
     console.log(`ステップ ${stepCounter} のデータ収集完了`);
   } catch (error) {
     console.error(`ステップ ${stepCounter} のデータ収集中にエラーが発生しました:`, error);
@@ -203,7 +275,7 @@ async function collectScreenData(page, outputDir, stepCounter, description) {
   }
 }
 
-// UI分析
+// コンポーネント使用状況の分析
 async function analyzeComponentUsage(captureDir) {
   const files = await fs.readdir(captureDir);
   const htmlFiles = files.filter(file => file.endsWith('_page.html'));
@@ -213,19 +285,33 @@ async function analyzeComponentUsage(captureDir) {
   for (const htmlFile of htmlFiles) {
     const htmlContent = await fs.readFile(path.join(captureDir, htmlFile), 'utf8');
     
-    // 簡易的なHTML解析
+    // 各種UI要素の計数
     const buttonCount = (htmlContent.match(/<button/g) || []).length;
     const inputCount = (htmlContent.match(/<input/g) || []).length;
     const selectCount = (htmlContent.match(/<select/g) || []).length;
     const tableCount = (htmlContent.match(/<table/g) || []).length;
     const divCount = (htmlContent.match(/<div/g) || []).length;
+    const headingCount = (htmlContent.match(/<h[1-6]/g) || []).length;
+    const linkCount = (htmlContent.match(/<a\s/g) || []).length;
+    const imageCount = (htmlContent.match(/<img/g) || []).length;
+    const formCount = (htmlContent.match(/<form/g) || []).length;
+    
+    // 特定のクラスやコンポーネントのカウント
+    const modalCount = (htmlContent.match(/modal|dialog|popup/gi) || []).length;
+    const cardCount = (htmlContent.match(/card|box|panel/gi) || []).length;
     
     componentStats[htmlFile] = {
       buttons: buttonCount,
       inputs: inputCount,
       selects: selectCount,
       tables: tableCount,
-      divs: divCount
+      divs: divCount,
+      headings: headingCount,
+      links: linkCount,
+      images: imageCount,
+      forms: formCount,
+      modals: modalCount,
+      cards: cardCount
     };
   }
   
@@ -236,10 +322,10 @@ async function analyzeComponentUsage(captureDir) {
   );
   
   // CSVでも保存
-  let csvContent = 'File,Buttons,Inputs,Selects,Tables,Divs\n';
+  let csvContent = 'File,Buttons,Inputs,Selects,Tables,Divs,Headings,Links,Images,Forms,Modals,Cards\n';
   
   for (const [file, stats] of Object.entries(componentStats)) {
-    csvContent += `${file},${stats.buttons},${stats.inputs},${stats.selects},${stats.tables},${stats.divs}\n`;
+    csvContent += `${file},${stats.buttons},${stats.inputs},${stats.selects},${stats.tables},${stats.divs},${stats.headings},${stats.links},${stats.images},${stats.forms},${stats.modals},${stats.cards}\n`;
   }
   
   await fs.writeFile(
@@ -248,13 +334,269 @@ async function analyzeComponentUsage(captureDir) {
   );
   
   console.log('コンポーネント使用状況の分析完了');
+  return componentStats;
+}
+
+// スタイル一貫性の分析
+async function analyzeStyleConsistency(captureDir) {
+  const files = await fs.readdir(captureDir);
+  const styleFiles = files.filter(file => file.endsWith('_styles.json'));
+  
+  const colorUsage = {};
+  const fontSizeUsage = {};
+  const fontFamilyUsage = {};
+  
+  for (const file of styleFiles) {
+    const styleData = JSON.parse(
+      await fs.readFile(path.join(captureDir, file), 'utf8')
+    );
+    
+    for (const [elementId, style] of Object.entries(styleData)) {
+      // 色の使用状況を記録
+      if (style.color) {
+        colorUsage[style.color] = (colorUsage[style.color] || 0) + 1;
+      }
+      if (style.backgroundColor && style.backgroundColor !== 'rgba(0, 0, 0, 0)') {
+        colorUsage[style.backgroundColor] = (colorUsage[style.backgroundColor] || 0) + 1;
+      }
+      
+      // フォントサイズの使用状況を記録
+      if (style.fontSize) {
+        fontSizeUsage[style.fontSize] = (fontSizeUsage[style.fontSize] || 0) + 1;
+      }
+      
+      // フォントファミリーの使用状況を記録
+      if (style.fontFamily) {
+        fontFamilyUsage[style.fontFamily] = (fontFamilyUsage[style.fontFamily] || 0) + 1;
+      }
+    }
+  }
+  
+  // 結果を保存
+  await fs.writeFile(
+    path.join(captureDir, 'color_usage.json'),
+    JSON.stringify(colorUsage, null, 2)
+  );
+  
+  await fs.writeFile(
+    path.join(captureDir, 'font_size_usage.json'),
+    JSON.stringify(fontSizeUsage, null, 2)
+  );
+  
+  await fs.writeFile(
+    path.join(captureDir, 'font_family_usage.json'),
+    JSON.stringify(fontFamilyUsage, null, 2)
+  );
+  
+  // 分析レポートの生成
+  let report = '# UI一貫性分析レポート\n\n';
+  
+  report += '## 色の使用状況\n\n';
+  report += '以下の色が3回以上使用されています：\n\n';
+  
+  for (const [color, count] of Object.entries(colorUsage)) {
+    if (count >= 3) {
+      report += `- ${color}: ${count}回\n`;
+    }
+  }
+  
+  report += '\n## フォントサイズの使用状況\n\n';
+  
+  for (const [fontSize, count] of Object.entries(fontSizeUsage)) {
+    report += `- ${fontSize}: ${count}回\n`;
+  }
+  
+  report += '\n## フォントファミリーの使用状況\n\n';
+  
+  for (const [fontFamily, count] of Object.entries(fontFamilyUsage)) {
+    report += `- ${fontFamily}: ${count}回\n`;
+  }
+  
+  await fs.writeFile(
+    path.join(captureDir, 'consistency_report.md'),
+    report
+  );
+  
+  console.log('スタイル一貫性の分析完了');
+  
+  return {
+    colorUsage,
+    fontSizeUsage,
+    fontFamilyUsage
+  };
+}
+
+// アクセシビリティ分析
+async function analyzeAccessibility(captureDir) {
+  const files = await fs.readdir(captureDir);
+  const accessibilityFiles = files.filter(file => file.endsWith('_accessibility.json'));
+  
+  let issues = [];
+  
+  for (const file of accessibilityFiles) {
+    const accessibilityData = JSON.parse(
+      await fs.readFile(path.join(captureDir, file), 'utf8')
+    );
+    
+    // input要素にラベルがない問題を検出
+    function findInputsWithoutLabels(node) {
+      if (!node) return;
+      
+      if (node.role === 'textbox' && (!node.name || node.name === '')) {
+        issues.push({
+          file,
+          issue: 'ラベルのない入力フィールド',
+          element: node
+        });
+      }
+      
+      // コントラスト比の問題を検出 (この部分はアクセシビリティデータから直接は取得できない場合があります)
+      // 画像に代替テキストがないケース
+      if (node.role === 'img' && (!node.name || node.name === '')) {
+        issues.push({
+          file,
+          issue: '代替テキストのない画像',
+          element: node
+        });
+      }
+      
+      if (node.children) {
+        for (const child of node.children) {
+          findInputsWithoutLabels(child);
+        }
+      }
+    }
+    
+    findInputsWithoutLabels(accessibilityData);
+  }
+  
+  // レポート生成
+  let report = '# アクセシビリティ分析レポート\n\n';
+  
+  if (issues.length === 0) {
+    report += '検出された問題はありません。\n';
+  } else {
+    report += `検出された問題: ${issues.length}件\n\n`;
+    
+    for (const issue of issues) {
+      report += `## ${issue.file} の問題\n\n`;
+      report += `- タイプ: ${issue.issue}\n`;
+      report += `- 要素: ${JSON.stringify(issue.element, null, 2)}\n\n`;
+    }
+  }
+  
+  await fs.writeFile(
+    path.join(captureDir, 'accessibility_report.md'),
+    report
+  );
+  
+  console.log('アクセシビリティ分析完了');
+  
+  return {
+    issueCount: issues.length,
+    issues
+  };
+}
+
+// 分析プロセスの実行
+async function runAnalysis(captureDir) {
+  console.log(`\n==== ${captureDir} の詳細分析を開始 ====`);
+  
+  // 1. コンポーネント使用状況
+  const componentStats = await analyzeComponentUsage(captureDir);
+  
+  // 2. スタイル一貫性
+  const styleConsistency = await analyzeStyleConsistency(captureDir);
+  
+  // 3. アクセシビリティ
+  const accessibilityIssues = await analyzeAccessibility(captureDir);
+  
+  // 4. 総合レポート生成
+  const summaryReport = {
+    captureDirectory: captureDir,
+    timestamp: new Date().toISOString(),
+    componentStats: {
+      totalComponents: Object.values(componentStats).reduce((sum, stats) => 
+        sum + Object.values(stats).reduce((a, b) => a + b, 0), 0)
+    },
+    styleConsistency: {
+      uniqueColors: Object.keys(styleConsistency.colorUsage).length,
+      uniqueFontSizes: Object.keys(styleConsistency.fontSizeUsage).length,
+      uniqueFontFamilies: Object.keys(styleConsistency.fontFamilyUsage).length
+    },
+    accessibility: {
+      issueCount: accessibilityIssues.issueCount
+    }
+  };
+  
+  await fs.writeFile(
+    path.join(captureDir, 'analysis_summary.json'),
+    JSON.stringify(summaryReport, null, 2)
+  );
+  
+  // Markdownレポート
+  let markdownReport = `# Web UI分析 総合レポート
+
+## 分析概要
+- 分析日時: ${new Date().toLocaleString('ja-JP')}
+- 分析ディレクトリ: ${captureDir}
+
+## UI要素の使用状況
+- 分析された要素の総数: ${summaryReport.componentStats.totalComponents}
+
+## スタイルの一貫性
+- 使用されている色の種類: ${summaryReport.styleConsistency.uniqueColors}
+- 使用されているフォントサイズの種類: ${summaryReport.styleConsistency.uniqueFontSizes}
+- 使用されているフォントファミリーの種類: ${summaryReport.styleConsistency.uniqueFontFamilies}
+
+## アクセシビリティ
+- 検出された問題数: ${summaryReport.accessibility.issueCount}
+
+詳細については各分析レポートを参照してください:
+- \`component_usage.json\`: UI要素の使用頻度
+- \`consistency_report.md\`: スタイルの一貫性分析
+- \`accessibility_report.md\`: アクセシビリティの問題
+
+## Playwrightトレースの活用方法
+
+収集されたトレースファイル(\`trace.zip\`)を使用して、よりインタラクティブな分析が可能です:
+
+\`\`\`bash
+npx playwright show-trace ${path.join(captureDir, 'trace.zip')}
+\`\`\`
+
+このコマンドでトレースビューアが開き、次の情報を確認できます:
+- ワークフロー全体の時系列ビュー
+- 各アクションと対応するスクリーンショット
+- ネットワークリクエスト
+- コンソールログ
+`;
+  
+  await fs.writeFile(
+    path.join(captureDir, 'analysis_report.md'),
+    markdownReport
+  );
+  
+  console.log(`分析完了: 結果は ${captureDir} に保存されました`);
+  return summaryReport;
 }
 
 // メイン実行部分
 async function main() {
   try {
     // 設定ファイルからの読み込み
-    const config = require('./config.js');
+    const configPath = path.resolve(__dirname, '..', '..', 'config', 'default.js');
+    let config;
+    
+    try {
+      config = require(configPath);
+      console.log('設定ファイルを読み込みました:', configPath);
+    } catch (configError) {
+      console.warn('設定ファイルの読み込みに失敗しました:', configError.message);
+      config = { baseUrl: 'http://localhost:3000' };
+      console.log('デフォルト設定を使用します: baseUrl =', config.baseUrl);
+    }
+    
     const baseUrl = config.baseUrl;
     
     console.log('UI分析ツール（手動操作版 - Playwright）を開始します');
@@ -269,13 +611,20 @@ async function main() {
     }
     
     // ワークフロー実行
-    await captureWorkflow(baseUrl, finalWorkflowName);
+    const result = await captureWorkflow(baseUrl, finalWorkflowName);
     
-    // 収集したデータの分析
-    const captureDir = path.join(__dirname, 'captures_pw', finalWorkflowName);
-    await analyzeComponentUsage(captureDir);
-    
-    console.log('UI分析プロセス完了');
+    if (result.success) {
+      // 収集したデータの分析
+      const rootDir = path.resolve(__dirname, '..', '..');
+      const captureDir = path.join(rootDir, 'captures_pw', finalWorkflowName);
+      await runAnalysis(captureDir);
+      
+      console.log('\nUI分析プロセス完了');
+      console.log(`\nPlaywrightトレースを表示するには以下のコマンドを実行してください:`);
+      console.log(`npx playwright show-trace ${path.join('captures_pw', finalWorkflowName, 'trace.zip')}`);
+    } else {
+      console.error('\nUI分析プロセスは問題により完了できませんでした:', result.error);
+    }
     
   } catch (error) {
     console.error('エラーが発生しました:', error);
@@ -289,5 +638,8 @@ if (require.main === module) {
 
 module.exports = {
   captureWorkflow,
-  analyzeComponentUsage
+  analyzeComponentUsage,
+  analyzeStyleConsistency,
+  analyzeAccessibility,
+  runAnalysis
 };

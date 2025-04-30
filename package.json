@@ -1,0 +1,27 @@
+{
+  "name": "web-ui-analyzer",
+  "version": "1.0.0",
+  "description": "WebシステムのUIを手動操作しながら収集・分析するツール",
+  "main": "src/index.js",
+  "scripts": {
+    "start:playwright": "node src/capture/playwright.js",
+    "start:puppeteer": "node src/capture/puppeteer.js",
+    "analyze": "node src/analysis/analyze.js",
+    "show-trace": "npx playwright show-trace"
+  },
+  "keywords": [
+    "ui-analysis",
+    "web-testing",
+    "playwright",
+    "puppeteer"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.35.0",
+    "puppeteer": "^20.5.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
