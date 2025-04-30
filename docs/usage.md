@@ -1,3 +1,232 @@
+# Web UI Analyzer - Usage Guide
+
+[English](#english) | [日本語](#japanese)
+
+<a id="english"></a>
+
+## [English]
+
+This document explains how to collect and analyze Web UI information using Web UI Analyzer while manually operating the system. This tool helps evaluate the usability and design consistency of web systems by tracking screen transitions and recording and analyzing UI elements on each screen.
+
+### 1. Prerequisites
+
+The following software must be installed:
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### 2. Environment Setup
+
+#### 2.1 Package Installation
+
+After cloning or downloading the repository, install the necessary packages with the following command:
+
+```bash
+# Install packages
+npm install
+```
+
+or
+
+```bash
+yarn install
+```
+
+### 3. Configuration File
+
+#### 3.1 Checking `config/default.js`
+
+Check the `config/default.js` file to set the URL of the web system to be analyzed:
+
+```javascript
+// config/default.js
+module.exports = {
+  // Web system base URL
+  baseUrl: 'http://your-web-system.com', // Change to the actual web system URL
+  
+  // Output settings
+  output: {
+    // Output directory
+    baseDir: './captures',
+    
+    // Data types to collect
+    capture: {
+      screenshot: true,
+      html: true,
+      styles: true,
+      dom: true,
+      accessibility: true
+    },
+    
+    // Analysis options
+    analysis: {
+      componentUsage: true,
+      styleConsistency: true,
+      accessibility: true,
+      generateFlowDiagram: true
+    }
+  }
+};
+```
+
+### 4. Running Web UI Analyzer
+
+There are two versions of this tool: Puppeteer version and Playwright version. Both provide similar functionality, but the Playwright version can collect more detailed information (such as trace data).
+
+#### 4.1 Running the Puppeteer Version
+
+```bash
+node src/capture/puppeteer.js
+```
+
+#### 4.2 Running the Playwright Version
+
+```bash
+node src/capture/playwright.js
+```
+
+#### 4.3 Running Sample Workflows
+
+Before starting your analysis, you can run several sample workflows to learn how to use the tool:
+
+```bash
+# Run the sample workflow selection menu
+node examples/workflows/index.js
+```
+
+You can select from the following three types of sample workflows:
+
+1. **E-commerce Site Purchase Flow** - Analyzes the typical flow from product selection to purchase
+2. **Layout Analysis Specialized Workflow** - Detailed analysis of UI consistency and layout patterns
+3. **Accessibility Audit Workflow** - Analysis focused on detecting accessibility issues
+
+Each sample requires manual operation but provides optimal settings for the purpose of the analysis and guidance on how to view the results.
+
+You can also run specific samples directly:
+
+```bash
+# Run the E-commerce flow directly
+node examples/workflows/ecommerce-flow.js
+
+# Run the layout analysis directly
+node examples/workflows/layout-analysis-flow.js
+
+# Run the accessibility audit directly
+node examples/workflows/accessibility-audit-flow.js
+```
+
+### 5. Manual Analysis Method
+
+The latest version supports fully manual operation with the following process:
+
+1. **Entering a Workflow Name**:
+   - First, enter the name of the workflow to be analyzed (e.g., "User Registration", "Product Purchase", etc.)
+   - This name is also used as the output directory name
+
+2. **Browser Launch and Initial Access**:
+   - A browser automatically launches and accesses the URL of the configured web system
+
+3. **Manual Login**:
+   - When the login screen of the web system is displayed, manually enter your login information
+   - After logging in, press the "Enter" key in the console to proceed
+
+4. **Operations on Each Screen**:
+   - For each screen, do the following:
+     - Enter a description of the current screen (e.g., "Dashboard Screen", "Product List Screen", etc.)
+     - Press Enter to automatically collect and save screen information
+     - You'll be asked if you want to proceed to the next screen; enter "y" to continue or "n" to end
+   - After manually moving to the next screen, press Enter to proceed to the next step
+
+5. **Analysis Completion**:
+   - After collecting all screens, basic analysis is automatically performed
+
+### 6. Collected Data
+
+#### 6.1 Directory Structure
+
+Analysis results are saved in the following directory structure:
+
+```
+captures/ (Puppeteer version) or captures_pw/ (Playwright version)
+└── <workflow_name>/
+    ├── step1_info.json        // Step information (description, etc.)
+    ├── step1_screenshot.png   // Screen screenshot
+    ├── step1_page.html        // HTML structure
+    ├── step1_styles.json      // CSS style information
+    ├── step1_dom.json         // DOM structure (Puppeteer version)
+    ├── step1_layout.json      // Layout information (Playwright version)
+    ├── step1_accessibility.json // Accessibility information
+    ├── step1_url.json         // URL information
+    ├── step2_info.json
+    ├── ... 
+    ├── component_usage.json   // Element usage analysis
+    └── component_usage.csv    // Element usage analysis (CSV format)
+```
+
+The Playwright version also records more detailed trace information:
+
+```
+captures_pw/
+└── <workflow_name>/
+    ├── ... (same as above)
+    └── trace.zip              // Detailed trace information
+```
+
+### 7. Analysis Features
+
+#### 7.1 Basic Component Analysis
+
+The following basic analyses are automatically performed from the collected screen data:
+
+- Tallying the frequency of HTML element usage (buttons, input fields, tables, etc.)
+- Distribution of UI elements on each screen
+
+### 8. Troubleshooting
+
+#### 8.1 Input Processing Issues
+
+If there are issues with console input processing:
+
+- On Windows, try running in Command Prompt or PowerShell instead of Git Bash
+- The handling of `process.stdin` and `process.stdout` may differ depending on the OS environment
+
+#### 8.2 Browser Launch Failures
+
+```bash
+# For Puppeteer
+npm uninstall puppeteer
+npm install puppeteer --no-cache
+
+# For Playwright
+npx playwright install chromium
+```
+
+#### 8.3 Out of Memory Errors
+
+When analyzing large web systems, you may run out of memory:
+
+```bash
+# Run with increased Node.js memory limit
+node --max-old-space-size=4096 erp-ui-capture.js
+```
+
+### 9. Summary
+
+Web UI Analyzer enables the following by collecting and analyzing information on each screen while manually operating a web system's user interface:
+
+1. Collection of screen data based on actual user operation flows
+2. Analysis of UI element usage and consistency
+3. Storage of visual and structural information for each screen
+4. Identification of accessibility issues
+
+The latest version supports fully manual operation, allowing flexible recording and analysis of complex web system screen transitions. This information can be used as reference material for UI improvement proposals and new system designs.
+
+---
+
+<a id="japanese"></a>
+
+## [日本語]
+
 # Web UI Analyzer - 使用手順書
 
 このドキュメントでは、Web UI Analyzerを使用してWebシステムのUIを手動操作しながら収集・分析する方法について説明します。このツールはWebシステムの画面遷移を追跡し、各画面のUI要素を記録・分析することで、システムの使いやすさやデザインの一貫性を評価するのに役立ちます。
