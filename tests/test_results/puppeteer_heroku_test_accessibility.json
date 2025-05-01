@@ -1,0 +1,212 @@
+{
+  "role": "RootWebArea",
+  "name": "The Internet",
+  "children": [
+    {
+      "role": "link",
+      "name": "Fork me on GitHub"
+    },
+    {
+      "role": "heading",
+      "name": "Welcome to the-internet",
+      "level": 1
+    },
+    {
+      "role": "heading",
+      "name": "Available Examples",
+      "level": 2
+    },
+    {
+      "role": "link",
+      "name": "A/B Testing"
+    },
+    {
+      "role": "link",
+      "name": "Add/Remove Elements"
+    },
+    {
+      "role": "link",
+      "name": "Basic Auth"
+    },
+    {
+      "role": "StaticText",
+      "name": " (user and pass: admin)"
+    },
+    {
+      "role": "link",
+      "name": "Broken Images"
+    },
+    {
+      "role": "link",
+      "name": "Challenging DOM"
+    },
+    {
+      "role": "link",
+      "name": "Checkboxes"
+    },
+    {
+      "role": "link",
+      "name": "Context Menu"
+    },
+    {
+      "role": "link",
+      "name": "Digest Authentication"
+    },
+    {
+      "role": "StaticText",
+      "name": " (user and pass: admin)"
+    },
+    {
+      "role": "link",
+      "name": "Disappearing Elements"
+    },
+    {
+      "role": "link",
+      "name": "Drag and Drop"
+    },
+    {
+      "role": "link",
+      "name": "Dropdown"
+    },
+    {
+      "role": "link",
+      "name": "Dynamic Content"
+    },
+    {
+      "role": "link",
+      "name": "Dynamic Controls"
+    },
+    {
+      "role": "link",
+      "name": "Dynamic Loading"
+    },
+    {
+      "role": "link",
+      "name": "Entry Ad"
+    },
+    {
+      "role": "link",
+      "name": "Exit Intent"
+    },
+    {
+      "role": "link",
+      "name": "File Download"
+    },
+    {
+      "role": "link",
+      "name": "File Upload"
+    },
+    {
+      "role": "link",
+      "name": "Floating Menu"
+    },
+    {
+      "role": "link",
+      "name": "Forgot Password"
+    },
+    {
+      "role": "link",
+      "name": "Form Authentication"
+    },
+    {
+      "role": "link",
+      "name": "Frames"
+    },
+    {
+      "role": "link",
+      "name": "Geolocation"
+    },
+    {
+      "role": "link",
+      "name": "Horizontal Slider"
+    },
+    {
+      "role": "link",
+      "name": "Hovers"
+    },
+    {
+      "role": "link",
+      "name": "Infinite Scroll"
+    },
+    {
+      "role": "link",
+      "name": "Inputs"
+    },
+    {
+      "role": "link",
+      "name": "JQuery UI Menus"
+    },
+    {
+      "role": "link",
+      "name": "JavaScript Alerts"
+    },
+    {
+      "role": "link",
+      "name": "JavaScript onload event error"
+    },
+    {
+      "role": "link",
+      "name": "Key Presses"
+    },
+    {
+      "role": "link",
+      "name": "Large & Deep DOM"
+    },
+    {
+      "role": "link",
+      "name": "Multiple Windows"
+    },
+    {
+      "role": "link",
+      "name": "Nested Frames"
+    },
+    {
+      "role": "link",
+      "name": "Notification Messages"
+    },
+    {
+      "role": "link",
+      "name": "Redirect Link"
+    },
+    {
+      "role": "link",
+      "name": "Secure File Download"
+    },
+    {
+      "role": "link",
+      "name": "Shadow DOM"
+    },
+    {
+      "role": "link",
+      "name": "Shifting Content"
+    },
+    {
+      "role": "link",
+      "name": "Slow Resources"
+    },
+    {
+      "role": "link",
+      "name": "Sortable Data Tables"
+    },
+    {
+      "role": "link",
+      "name": "Status Codes"
+    },
+    {
+      "role": "link",
+      "name": "Typos"
+    },
+    {
+      "role": "link",
+      "name": "WYSIWYG Editor"
+    },
+    {
+      "role": "StaticText",
+      "name": "Powered by "
+    },
+    {
+      "role": "link",
+      "name": "Elemental Selenium"
+    }
+  ]
+}

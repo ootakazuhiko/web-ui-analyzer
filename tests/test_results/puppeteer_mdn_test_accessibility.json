@@ -1,0 +1,509 @@
+{
+  "role": "RootWebArea",
+  "name": "MDN Web Docs",
+  "children": [
+    {
+      "role": "link",
+      "name": "Skip to main content"
+    },
+    {
+      "role": "link",
+      "name": "Skip to search"
+    },
+    {
+      "role": "link",
+      "name": "DataStax Want to build powerful RAG and multi-agent AI Applications with drag-and-drop and low/no-code? Langflow’s your answer."
+    },
+    {
+      "role": "link",
+      "name": "Get started for free"
+    },
+    {
+      "role": "link",
+      "name": "AD"
+    },
+    {
+      "role": "link",
+      "name": "MDN homepage"
+    },
+    {
+      "role": "button",
+      "name": "Open main menu",
+      "description": "Open main menu",
+      "haspopup": "menu"
+    },
+    {
+      "role": "heading",
+      "name": "Resources for Developers, by Developers ",
+      "level": 1
+    },
+    {
+      "role": "StaticText",
+      "name": "Documenting web technologies, including"
+    },
+    {
+      "role": "link",
+      "name": "CSS"
+    },
+    {
+      "role": "StaticText",
+      "name": ","
+    },
+    {
+      "role": "link",
+      "name": "HTML"
+    },
+    {
+      "role": "StaticText",
+      "name": ", and"
+    },
+    {
+      "role": "link",
+      "name": "JavaScript"
+    },
+    {
+      "role": "StaticText",
+      "name": ", since 2005."
+    },
+    {
+      "role": "StaticText",
+      "name": "Search MDN"
+    },
+    {
+      "role": "combobox",
+      "name": "Search MDN",
+      "required": true,
+      "autocomplete": "list",
+      "haspopup": "listbox"
+    },
+    {
+      "role": "button",
+      "name": "SEARCH"
+    },
+    {
+      "role": "listbox",
+      "name": "Search MDN",
+      "orientation": "vertical"
+    },
+    {
+      "role": "link",
+      "name": "Datastax"
+    },
+    {
+      "role": "link",
+      "name": "AD"
+    },
+    {
+      "role": "heading",
+      "name": "Featured articles",
+      "level": 2
+    },
+    {
+      "role": "link",
+      "name": "Blog"
+    },
+    {
+      "role": "link",
+      "name": "JavaScript Temporal is coming"
+    },
+    {
+      "role": "StaticText",
+      "name": "A new way to handle dates and times is being added to JavaScript. Let's take a look at Temporal, what problems it solves, the current state, and what you'll find in the new documentation about it on MDN."
+    },
+    {
+      "role": "link",
+      "name": "CSS: カスケーディングスタイルシート"
+    },
+    {
+      "role": "link",
+      "name": "CSS アンカー位置指定"
+    },
+    {
+      "role": "StaticText",
+      "name": "CSS アンカー位置指定モジュールでは、要素を互いに結びつける機能を定義しています。特定の要素がアンカー要素として定義され、アンカー位置指定要素は、結びつけられたアンカー要素のサイズと位置に基づいて、サイズと位置を設定することができます。"
+    },
+    {
+      "role": "link",
+      "name": "Web API"
+    },
+    {
+      "role": "link",
+      "name": "ビュー遷移 API の使用"
+    },
+    {
+      "role": "StaticText",
+      "name": "この記事では、ビュー遷移 API がどのように動作するのか、ビュー遷移を作成し、遷移アニメーションをカスタマイズする方法、アクティブなビュー遷移を操作する方法についての理論を説明します。単一ページアプリケーション (SPA) における DOM 状態の更新と、複数ページアプリケーション (MPA) における文書間の移動の両方におけるビュー遷移をカバーしています。"
+    },
+    {
+      "role": "link",
+      "name": "JavaScript"
+    },
+    {
+      "role": "link",
+      "name": "Temporal"
+    },
+    {
+      "role": "StaticText",
+      "name": "The Temporal object enables date and time management in various scenarios, including built-in time zone and calendar representation, wall-clock time conversions, arithmetics, formatting, and more. It is designed as a full replacement for the Date object."
+    },
+    {
+      "role": "heading",
+      "name": "Latest news",
+      "level": 2
+    },
+    {
+      "role": "link",
+      "name": "MDN 2024 content projects"
+    },
+    {
+      "role": "link",
+      "name": "developer.mozilla.org"
+    },
+    {
+      "role": "StaticText",
+      "name": "4 months ago"
+    },
+    {
+      "role": "link",
+      "name": "A new learning experience on MDN"
+    },
+    {
+      "role": "link",
+      "name": "developer.mozilla.org"
+    },
+    {
+      "role": "StaticText",
+      "name": "4 months ago"
+    },
+    {
+      "role": "link",
+      "name": "Introducing the new MDN Community page"
+    },
+    {
+      "role": "link",
+      "name": "developer.mozilla.org"
+    },
+    {
+      "role": "StaticText",
+      "name": "7 months ago"
+    },
+    {
+      "role": "heading",
+      "name": "Recent contributions",
+      "level": 2
+    },
+    {
+      "role": "link",
+      "name": "[zh-TW]: update CSS \"CSS inline layout\""
+    },
+    {
+      "role": "link",
+      "name": "mdn/translated-content"
+    },
+    {
+      "role": "StaticText",
+      "name": "2 days ago"
+    },
+    {
+      "role": "link",
+      "name": "2025/04/17 時点の英語版に同期"
+    },
+    {
+      "role": "link",
+      "name": "mdn/translated-content"
+    },
+    {
+      "role": "StaticText",
+      "name": "a day ago"
+    },
+    {
+      "role": "link",
+      "name": "[ja] sync translated content"
+    },
+    {
+      "role": "link",
+      "name": "mdn/translated-content"
+    },
+    {
+      "role": "StaticText",
+      "name": "a day ago"
+    },
+    {
+      "role": "link",
+      "name": "ja: fix broken link on anchor"
+    },
+    {
+      "role": "link",
+      "name": "mdn/translated-content"
+    },
+    {
+      "role": "StaticText",
+      "name": "a day ago"
+    },
+    {
+      "role": "link",
+      "name": "ja: add properties `imageSizes`, `imageSrcset`, and `integrity` to HT…"
+    },
+    {
+      "role": "link",
+      "name": "mdn/translated-content"
+    },
+    {
+      "role": "StaticText",
+      "name": "a day ago"
+    },
+    {
+      "role": "link",
+      "name": "Update PWA manifest id example: id and start_url must be the same origin"
+    },
+    {
+      "role": "link",
+      "name": "mdn/content"
+    },
+    {
+      "role": "StaticText",
+      "name": "a day ago"
+    },
+    {
+      "role": "link",
+      "name": "Date input IDL value links fixed/added"
+    },
+    {
+      "role": "link",
+      "name": "mdn/content"
+    },
+    {
+      "role": "StaticText",
+      "name": "a day ago"
+    },
+    {
+      "role": "link",
+      "name": "Firefox release notes 138"
+    },
+    {
+      "role": "link",
+      "name": "mdn/content"
+    },
+    {
+      "role": "StaticText",
+      "name": "a day ago"
+    },
+    {
+      "role": "link",
+      "name": "Add BCD table for SVG transform attribute"
+    },
+    {
+      "role": "link",
+      "name": "mdn/content"
+    },
+    {
+      "role": "StaticText",
+      "name": "a day ago"
+    },
+    {
+      "role": "link",
+      "name": "Remove unreferenced images"
+    },
+    {
+      "role": "link",
+      "name": "mdn/content"
+    },
+    {
+      "role": "StaticText",
+      "name": "a day ago"
+    },
+    {
+      "role": "heading",
+      "name": "Contributor Spotlight",
+      "level": 3
+    },
+    {
+      "role": "link",
+      "name": " YASH RAJ BHARTI "
+    },
+    {
+      "role": "StaticText",
+      "name": "MDN resonates with my passion to build a consistent and open web, where developers can learn and grow."
+    },
+    {
+      "role": "link",
+      "name": "Get involved →"
+    },
+    {
+      "role": "image",
+      "name": "Tiled Mozilla Logo"
+    },
+    {
+      "role": "link",
+      "name": "Datastax"
+    },
+    {
+      "role": "link",
+      "name": "AD"
+    },
+    {
+      "role": "link",
+      "name": "MDN homepage"
+    },
+    {
+      "role": "StaticText",
+      "name": "Your blueprint for a better internet."
+    },
+    {
+      "role": "link",
+      "name": "MDN on Bluesky"
+    },
+    {
+      "role": "link",
+      "name": "MDN on Mastodon"
+    },
+    {
+      "role": "link",
+      "name": "MDN on X (formerly Twitter)"
+    },
+    {
+      "role": "link",
+      "name": "MDN on GitHub"
+    },
+    {
+      "role": "link",
+      "name": "MDN Blog RSS Feed"
+    },
+    {
+      "role": "heading",
+      "name": "MDN",
+      "level": 2
+    },
+    {
+      "role": "link",
+      "name": "About"
+    },
+    {
+      "role": "link",
+      "name": "Blog"
+    },
+    {
+      "role": "link",
+      "name": "Careers"
+    },
+    {
+      "role": "link",
+      "name": "Advertise with us"
+    },
+    {
+      "role": "heading",
+      "name": "Support",
+      "level": 2
+    },
+    {
+      "role": "link",
+      "name": "Product help"
+    },
+    {
+      "role": "link",
+      "name": "Report an issue"
+    },
+    {
+      "role": "heading",
+      "name": "Our communities",
+      "level": 2
+    },
+    {
+      "role": "link",
+      "name": "MDN Community"
+    },
+    {
+      "role": "link",
+      "name": "MDN Forum"
+    },
+    {
+      "role": "link",
+      "name": "MDN Chat"
+    },
+    {
+      "role": "heading",
+      "name": "Developers",
+      "level": 2
+    },
+    {
+      "role": "link",
+      "name": "Web Technologies"
+    },
+    {
+      "role": "link",
+      "name": "Learn Web Development"
+    },
+    {
+      "role": "link",
+      "name": "MDN Plus"
+    },
+    {
+      "role": "link",
+      "name": "Hacks Blog"
+    },
+    {
+      "role": "link",
+      "name": ""
+    },
+    {
+      "role": "link",
+      "name": "Website Privacy Notice"
+    },
+    {
+      "role": "link",
+      "name": "Cookies"
+    },
+    {
+      "role": "link",
+      "name": "Legal"
+    },
+    {
+      "role": "link",
+      "name": "Community Participation Guidelines"
+    },
+    {
+      "role": "StaticText",
+      "name": "Visit"
+    },
+    {
+      "role": "link",
+      "name": "Mozilla Corporation’s"
+    },
+    {
+      "role": "StaticText",
+      "name": "not-for-profit parent, the"
+    },
+    {
+      "role": "link",
+      "name": "Mozilla Foundation"
+    },
+    {
+      "role": "StaticText",
+      "name": "."
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "StaticText",
+      "name": "Portions of this content are ©1998–"
+    },
+    {
+      "role": "StaticText",
+      "name": "2025"
+    },
+    {
+      "role": "StaticText",
+      "name": " by individual mozilla.org contributors. Content available under"
+    },
+    {
+      "role": "link",
+      "name": "a Creative Commons license"
+    },
+    {
+      "role": "StaticText",
+      "name": "."
+    }
+  ]
+}

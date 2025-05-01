@@ -1,0 +1,562 @@
+{
+  "summary": {
+    "totalTests": 79,
+    "passedTests": 67,
+    "failedTests": 0,
+    "skippedTests": 12
+  },
+  "puppeteerTests": [
+    {
+      "id": "2.1",
+      "site": "MDN Web Docs",
+      "description": "Puppeteer版の起動",
+      "status": "passed"
+    },
+    {
+      "id": "2.2",
+      "site": "MDN Web Docs",
+      "description": "baseUrlへのアクセス",
+      "status": "passed"
+    },
+    {
+      "id": "2.3",
+      "site": "MDN Web Docs",
+      "description": "画面キャプチャ（スクリーンショット）",
+      "status": "passed"
+    },
+    {
+      "id": "2.4",
+      "site": "MDN Web Docs",
+      "description": "HTML構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.5",
+      "site": "MDN Web Docs",
+      "description": "スタイル情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.6",
+      "site": "MDN Web Docs",
+      "description": "DOM構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.7",
+      "site": "MDN Web Docs",
+      "description": "アクセシビリティ情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.8",
+      "site": "MDN Web Docs",
+      "description": "URL情報の保存",
+      "status": "passed"
+    },
+    {
+      "id": "7.6",
+      "site": "MDN Web Docs",
+      "description": "セキュリティ脆弱性の修正確認",
+      "status": "passed",
+      "notes": "Puppeteer v24.7.2で脆弱性が解消されていることを確認済み"
+    },
+    {
+      "id": "7.7",
+      "site": "MDN Web Docs",
+      "description": "既存のコードとの互換性",
+      "status": "passed",
+      "notes": "アップデート後も基本機能が動作することを確認"
+    },
+    {
+      "id": "2.1",
+      "site": "DemoQA Shop",
+      "description": "Puppeteer版の起動",
+      "status": "passed"
+    },
+    {
+      "id": "2.2",
+      "site": "DemoQA Shop",
+      "description": "baseUrlへのアクセス",
+      "status": "passed"
+    },
+    {
+      "id": "2.3",
+      "site": "DemoQA Shop",
+      "description": "画面キャプチャ（スクリーンショット）",
+      "status": "passed"
+    },
+    {
+      "id": "2.4",
+      "site": "DemoQA Shop",
+      "description": "HTML構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.5",
+      "site": "DemoQA Shop",
+      "description": "スタイル情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.6",
+      "site": "DemoQA Shop",
+      "description": "DOM構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.7",
+      "site": "DemoQA Shop",
+      "description": "アクセシビリティ情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.8",
+      "site": "DemoQA Shop",
+      "description": "URL情報の保存",
+      "status": "passed"
+    },
+    {
+      "id": "7.6",
+      "site": "DemoQA Shop",
+      "description": "セキュリティ脆弱性の修正確認",
+      "status": "passed",
+      "notes": "Puppeteer v24.7.2で脆弱性が解消されていることを確認済み"
+    },
+    {
+      "id": "7.7",
+      "site": "DemoQA Shop",
+      "description": "既存のコードとの互換性",
+      "status": "passed",
+      "notes": "アップデート後も基本機能が動作することを確認"
+    },
+    {
+      "id": "2.1",
+      "site": "The Internet Heroku App",
+      "description": "Puppeteer版の起動",
+      "status": "passed"
+    },
+    {
+      "id": "2.2",
+      "site": "The Internet Heroku App",
+      "description": "baseUrlへのアクセス",
+      "status": "passed"
+    },
+    {
+      "id": "2.3",
+      "site": "The Internet Heroku App",
+      "description": "画面キャプチャ（スクリーンショット）",
+      "status": "passed"
+    },
+    {
+      "id": "2.4",
+      "site": "The Internet Heroku App",
+      "description": "HTML構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.5",
+      "site": "The Internet Heroku App",
+      "description": "スタイル情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.6",
+      "site": "The Internet Heroku App",
+      "description": "DOM構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.7",
+      "site": "The Internet Heroku App",
+      "description": "アクセシビリティ情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.8",
+      "site": "The Internet Heroku App",
+      "description": "URL情報の保存",
+      "status": "passed"
+    },
+    {
+      "id": "7.6",
+      "site": "The Internet Heroku App",
+      "description": "セキュリティ脆弱性の修正確認",
+      "status": "passed",
+      "notes": "Puppeteer v24.7.2で脆弱性が解消されていることを確認済み"
+    },
+    {
+      "id": "7.7",
+      "site": "The Internet Heroku App",
+      "description": "既存のコードとの互換性",
+      "status": "passed",
+      "notes": "アップデート後も基本機能が動作することを確認"
+    },
+    {
+      "id": "7.6",
+      "site": "パッケージ全体",
+      "description": "npm auditセキュリティチェック",
+      "status": "passed",
+      "notes": "セキュリティ脆弱性は検出されませんでした"
+    }
+  ],
+  "playwrightTests": [
+    {
+      "id": "3.1",
+      "browser": "chromium",
+      "site": "MDN Web Docs",
+      "description": "Playwright版の起動",
+      "status": "passed"
+    },
+    {
+      "id": "3.2",
+      "browser": "chromium",
+      "site": "MDN Web Docs",
+      "description": "baseUrlへのアクセス",
+      "status": "passed"
+    },
+    {
+      "id": "3.3",
+      "browser": "chromium",
+      "site": "MDN Web Docs",
+      "description": "画面キャプチャ（スクリーンショット）",
+      "status": "passed"
+    },
+    {
+      "id": "3.4",
+      "browser": "chromium",
+      "site": "MDN Web Docs",
+      "description": "HTML構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "3.5",
+      "browser": "chromium",
+      "site": "MDN Web Docs",
+      "description": "スタイル情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "3.6",
+      "browser": "chromium",
+      "site": "MDN Web Docs",
+      "description": "レイアウト情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "3.7",
+      "browser": "chromium",
+      "site": "MDN Web Docs",
+      "description": "アクセシビリティ情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "3.8",
+      "browser": "chromium",
+      "site": "MDN Web Docs",
+      "description": "URL情報の保存",
+      "status": "passed"
+    },
+    {
+      "id": "3.9",
+      "browser": "chromium",
+      "site": "MDN Web Docs",
+      "description": "トレース機能の動作確認",
+      "status": "passed"
+    },
+    {
+      "id": "8.1",
+      "browser": "chromium",
+      "site": "MDN Web Docs",
+      "description": "chromiumでの動作",
+      "status": "passed"
+    },
+    {
+      "id": "3.1",
+      "browser": "chromium",
+      "site": "DemoQA Shop",
+      "description": "Playwright版の起動",
+      "status": "passed"
+    },
+    {
+      "id": "3.2",
+      "browser": "chromium",
+      "site": "DemoQA Shop",
+      "description": "baseUrlへのアクセス",
+      "status": "passed"
+    },
+    {
+      "id": "3.3",
+      "browser": "chromium",
+      "site": "DemoQA Shop",
+      "description": "画面キャプチャ（スクリーンショット）",
+      "status": "passed"
+    },
+    {
+      "id": "3.4",
+      "browser": "chromium",
+      "site": "DemoQA Shop",
+      "description": "HTML構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "3.5",
+      "browser": "chromium",
+      "site": "DemoQA Shop",
+      "description": "スタイル情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "3.6",
+      "browser": "chromium",
+      "site": "DemoQA Shop",
+      "description": "レイアウト情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "3.7",
+      "browser": "chromium",
+      "site": "DemoQA Shop",
+      "description": "アクセシビリティ情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "3.8",
+      "browser": "chromium",
+      "site": "DemoQA Shop",
+      "description": "URL情報の保存",
+      "status": "passed"
+    },
+    {
+      "id": "3.9",
+      "browser": "chromium",
+      "site": "DemoQA Shop",
+      "description": "トレース機能の動作確認",
+      "status": "passed"
+    },
+    {
+      "id": "3.1",
+      "browser": "chromium",
+      "site": "The Internet Heroku App",
+      "description": "Playwright版の起動",
+      "status": "passed"
+    },
+    {
+      "id": "3.2",
+      "browser": "chromium",
+      "site": "The Internet Heroku App",
+      "description": "baseUrlへのアクセス",
+      "status": "passed"
+    },
+    {
+      "id": "3.3",
+      "browser": "chromium",
+      "site": "The Internet Heroku App",
+      "description": "画面キャプチャ（スクリーンショット）",
+      "status": "passed"
+    },
+    {
+      "id": "3.4",
+      "browser": "chromium",
+      "site": "The Internet Heroku App",
+      "description": "HTML構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "3.5",
+      "browser": "chromium",
+      "site": "The Internet Heroku App",
+      "description": "スタイル情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "3.6",
+      "browser": "chromium",
+      "site": "The Internet Heroku App",
+      "description": "レイアウト情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "3.7",
+      "browser": "chromium",
+      "site": "The Internet Heroku App",
+      "description": "アクセシビリティ情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "3.8",
+      "browser": "chromium",
+      "site": "The Internet Heroku App",
+      "description": "URL情報の保存",
+      "status": "passed"
+    },
+    {
+      "id": "3.9",
+      "browser": "chromium",
+      "site": "The Internet Heroku App",
+      "description": "トレース機能の動作確認",
+      "status": "passed"
+    },
+    {
+      "id": "3.1",
+      "browser": "firefox",
+      "site": "MDN Web Docs",
+      "description": "Playwright版の起動",
+      "status": "passed"
+    },
+    {
+      "id": "3.2",
+      "browser": "firefox",
+      "site": "MDN Web Docs",
+      "description": "baseUrlへのアクセス",
+      "status": "passed"
+    },
+    {
+      "id": "3.3",
+      "browser": "firefox",
+      "site": "MDN Web Docs",
+      "description": "画面キャプチャ（スクリーンショット）",
+      "status": "passed"
+    },
+    {
+      "id": "3.4",
+      "browser": "firefox",
+      "site": "MDN Web Docs",
+      "description": "HTML構造の取得",
+      "status": "skipped",
+      "notes": "メインブラウザ (Chromium) 以外ではスキップ"
+    },
+    {
+      "id": "3.5",
+      "browser": "firefox",
+      "site": "MDN Web Docs",
+      "description": "スタイル情報の取得",
+      "status": "skipped",
+      "notes": "メインブラウザ (Chromium) 以外ではスキップ"
+    },
+    {
+      "id": "3.6",
+      "browser": "firefox",
+      "site": "MDN Web Docs",
+      "description": "レイアウト情報の取得",
+      "status": "skipped",
+      "notes": "メインブラウザ (Chromium) 以外ではスキップ"
+    },
+    {
+      "id": "3.7",
+      "browser": "firefox",
+      "site": "MDN Web Docs",
+      "description": "アクセシビリティ情報の取得",
+      "status": "skipped",
+      "notes": "メインブラウザ (Chromium) 以外ではスキップ"
+    },
+    {
+      "id": "3.8",
+      "browser": "firefox",
+      "site": "MDN Web Docs",
+      "description": "URL情報の保存",
+      "status": "skipped",
+      "notes": "メインブラウザ (Chromium) 以外ではスキップ"
+    },
+    {
+      "id": "3.9",
+      "browser": "firefox",
+      "site": "MDN Web Docs",
+      "description": "トレース機能の動作確認",
+      "status": "skipped",
+      "notes": "メインブラウザ (Chromium) 以外ではスキップ"
+    },
+    {
+      "id": "8.2",
+      "browser": "firefox",
+      "site": "MDN Web Docs",
+      "description": "firefoxでの動作",
+      "status": "passed"
+    },
+    {
+      "id": "3.1",
+      "browser": "webkit",
+      "site": "MDN Web Docs",
+      "description": "Playwright版の起動",
+      "status": "passed"
+    },
+    {
+      "id": "3.2",
+      "browser": "webkit",
+      "site": "MDN Web Docs",
+      "description": "baseUrlへのアクセス",
+      "status": "passed"
+    },
+    {
+      "id": "3.3",
+      "browser": "webkit",
+      "site": "MDN Web Docs",
+      "description": "画面キャプチャ（スクリーンショット）",
+      "status": "passed"
+    },
+    {
+      "id": "3.4",
+      "browser": "webkit",
+      "site": "MDN Web Docs",
+      "description": "HTML構造の取得",
+      "status": "skipped",
+      "notes": "メインブラウザ (Chromium) 以外ではスキップ"
+    },
+    {
+      "id": "3.5",
+      "browser": "webkit",
+      "site": "MDN Web Docs",
+      "description": "スタイル情報の取得",
+      "status": "skipped",
+      "notes": "メインブラウザ (Chromium) 以外ではスキップ"
+    },
+    {
+      "id": "3.6",
+      "browser": "webkit",
+      "site": "MDN Web Docs",
+      "description": "レイアウト情報の取得",
+      "status": "skipped",
+      "notes": "メインブラウザ (Chromium) 以外ではスキップ"
+    },
+    {
+      "id": "3.7",
+      "browser": "webkit",
+      "site": "MDN Web Docs",
+      "description": "アクセシビリティ情報の取得",
+      "status": "skipped",
+      "notes": "メインブラウザ (Chromium) 以外ではスキップ"
+    },
+    {
+      "id": "3.8",
+      "browser": "webkit",
+      "site": "MDN Web Docs",
+      "description": "URL情報の保存",
+      "status": "skipped",
+      "notes": "メインブラウザ (Chromium) 以外ではスキップ"
+    },
+    {
+      "id": "3.9",
+      "browser": "webkit",
+      "site": "MDN Web Docs",
+      "description": "トレース機能の動作確認",
+      "status": "skipped",
+      "notes": "メインブラウザ (Chromium) 以外ではスキップ"
+    },
+    {
+      "id": "8.3",
+      "browser": "webkit",
+      "site": "MDN Web Docs",
+      "description": "webkitでの動作",
+      "status": "passed"
+    }
+  ],
+  "startTime": "2025-04-30T21:58:10.674Z",
+  "endTime": "2025-04-30T21:58:53.752Z",
+  "environment": {
+    "os": "win32",
+    "nodeVersion": "v20.11.1",
+    "puppeteerVersion": "24.7.2",
+    "playwrightVersion": "1.52.0"
+  },
+  "duration": 43.078
+}

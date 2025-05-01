@@ -1,0 +1,14 @@
+{
+  "role": "RootWebArea",
+  "name": "WordPress › Error",
+  "children": [
+    {
+      "role": "StaticText",
+      "name": "There has been a critical error on this website."
+    },
+    {
+      "role": "link",
+      "name": "Learn more about troubleshooting WordPress."
+    }
+  ]
+}

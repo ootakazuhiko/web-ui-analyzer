@@ -1,0 +1,56 @@
+{
+  "tagName": "BODY",
+  "id": "",
+  "className": "",
+  "childrenCount": 3,
+  "children": [
+    {
+      "tagName": "DIV",
+      "id": "",
+      "className": "row",
+      "childrenCount": 1,
+      "children": [
+        {
+          "tagName": "DIV",
+          "id": "flash-messages",
+          "className": "large-12 columns",
+          "childrenCount": 0
+        }
+      ]
+    },
+    {
+      "tagName": "DIV",
+      "id": "",
+      "className": "row",
+      "childrenCount": 2,
+      "children": [
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "",
+          "childrenCount": 1
+        },
+        {
+          "tagName": "DIV",
+          "id": "content",
+          "className": "large-12 columns",
+          "childrenCount": 4
+        }
+      ]
+    },
+    {
+      "tagName": "DIV",
+      "id": "page-footer",
+      "className": "row",
+      "childrenCount": 1,
+      "children": [
+        {
+          "tagName": "DIV",
+          "id": "",
+          "className": "large-4 large-centered columns",
+          "childrenCount": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "summary": {
+    "totalTests": 36,
+    "passedTests": 31,
+    "failedTests": 5,
+    "skippedTests": 0
+  },
+  "puppeteerTests": [
+    {
+      "id": "2.1",
+      "site": "MDN Web Docs",
+      "description": "Puppeteer版の起動",
+      "status": "passed"
+    },
+    {
+      "id": "2.2",
+      "site": "MDN Web Docs",
+      "description": "baseUrlへのアクセス",
+      "status": "passed"
+    },
+    {
+      "id": "2.3",
+      "site": "MDN Web Docs",
+      "description": "画面キャプチャ（スクリーンショット）",
+      "status": "passed"
+    },
+    {
+      "id": "2.4",
+      "site": "MDN Web Docs",
+      "description": "HTML構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.5",
+      "site": "MDN Web Docs",
+      "description": "スタイル情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.6",
+      "site": "MDN Web Docs",
+      "description": "DOM構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.7",
+      "site": "MDN Web Docs",
+      "description": "アクセシビリティ情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.8",
+      "site": "MDN Web Docs",
+      "description": "URL情報の保存",
+      "status": "passed"
+    },
+    {
+      "id": "7.6",
+      "site": "MDN Web Docs",
+      "description": "セキュリティ脆弱性の修正確認",
+      "status": "passed",
+      "notes": "Puppeteer v24.7.2で脆弱性が解消されていることを確認済み"
+    },
+    {
+      "id": "7.7",
+      "site": "MDN Web Docs",
+      "description": "既存のコードとの互換性",
+      "status": "passed",
+      "notes": "アップデート後も基本機能が動作することを確認"
+    },
+    {
+      "id": "2.1",
+      "site": "DemoQA Shop",
+      "description": "Puppeteer版の起動",
+      "status": "passed"
+    },
+    {
+      "id": "2.2",
+      "site": "DemoQA Shop",
+      "description": "baseUrlへのアクセス",
+      "status": "passed"
+    },
+    {
+      "id": "2.3",
+      "site": "DemoQA Shop",
+      "description": "画面キャプチャ（スクリーンショット）",
+      "status": "passed"
+    },
+    {
+      "id": "2.4",
+      "site": "DemoQA Shop",
+      "description": "HTML構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.5",
+      "site": "DemoQA Shop",
+      "description": "スタイル情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.6",
+      "site": "DemoQA Shop",
+      "description": "DOM構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.7",
+      "site": "DemoQA Shop",
+      "description": "アクセシビリティ情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.8",
+      "site": "DemoQA Shop",
+      "description": "URL情報の保存",
+      "status": "passed"
+    },
+    {
+      "id": "7.6",
+      "site": "DemoQA Shop",
+      "description": "セキュリティ脆弱性の修正確認",
+      "status": "passed",
+      "notes": "Puppeteer v24.7.2で脆弱性が解消されていることを確認済み"
+    },
+    {
+      "id": "7.7",
+      "site": "DemoQA Shop",
+      "description": "既存のコードとの互換性",
+      "status": "passed",
+      "notes": "アップデート後も基本機能が動作することを確認"
+    },
+    {
+      "id": "2.1",
+      "site": "The Internet Heroku App",
+      "description": "Puppeteer版の起動",
+      "status": "passed"
+    },
+    {
+      "id": "2.2",
+      "site": "The Internet Heroku App",
+      "description": "baseUrlへのアクセス",
+      "status": "passed"
+    },
+    {
+      "id": "2.3",
+      "site": "The Internet Heroku App",
+      "description": "画面キャプチャ（スクリーンショット）",
+      "status": "passed"
+    },
+    {
+      "id": "2.4",
+      "site": "The Internet Heroku App",
+      "description": "HTML構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.5",
+      "site": "The Internet Heroku App",
+      "description": "スタイル情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.6",
+      "site": "The Internet Heroku App",
+      "description": "DOM構造の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.7",
+      "site": "The Internet Heroku App",
+      "description": "アクセシビリティ情報の取得",
+      "status": "passed"
+    },
+    {
+      "id": "2.8",
+      "site": "The Internet Heroku App",
+      "description": "URL情報の保存",
+      "status": "passed"
+    },
+    {
+      "id": "7.6",
+      "site": "The Internet Heroku App",
+      "description": "セキュリティ脆弱性の修正確認",
+      "status": "passed",
+      "notes": "Puppeteer v24.7.2で脆弱性が解消されていることを確認済み"
+    },
+    {
+      "id": "7.7",
+      "site": "The Internet Heroku App",
+      "description": "既存のコードとの互換性",
+      "status": "passed",
+      "notes": "アップデート後も基本機能が動作することを確認"
+    },
+    {
+      "id": "7.6",
+      "site": "パッケージ全体",
+      "description": "npm auditセキュリティチェック",
+      "status": "passed",
+      "notes": "セキュリティ脆弱性は検出されませんでした"
+    }
+  ],
+  "playwrightTests": [
+    {
+      "id": "3.1",
+      "browser": "chromium",
+      "site": "MDN Web Docs",
+      "description": "Playwright版の起動",
+      "status": "failed",
+      "notes": "browserType.launch: Executable doesn't exist at C:\\Users\\oota\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1169\\chrome-win\\headless_shell.exe\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "id": "3.1",
+      "browser": "chromium",
+      "site": "DemoQA Shop",
+      "description": "Playwright版の起動",
+      "status": "failed",
+      "notes": "browserType.launch: Executable doesn't exist at C:\\Users\\oota\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1169\\chrome-win\\headless_shell.exe\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "id": "3.1",
+      "browser": "chromium",
+      "site": "The Internet Heroku App",
+      "description": "Playwright版の起動",
+      "status": "failed",
+      "notes": "browserType.launch: Executable doesn't exist at C:\\Users\\oota\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1169\\chrome-win\\headless_shell.exe\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "id": "3.1",
+      "browser": "firefox",
+      "site": "MDN Web Docs",
+      "description": "Playwright版の起動",
+      "status": "failed",
+      "notes": "browserType.launch: Executable doesn't exist at C:\\Users\\oota\\AppData\\Local\\ms-playwright\\firefox-1482\\firefox\\firefox.exe\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "id": "3.1",
+      "browser": "webkit",
+      "site": "MDN Web Docs",
+      "description": "Playwright版の起動",
+      "status": "failed",
+      "notes": "browserType.launch: Executable doesn't exist at C:\\Users\\oota\\AppData\\Local\\ms-playwright\\webkit-2158\\Playwright.exe\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+    }
+  ],
+  "startTime": "2025-04-30T21:53:39.765Z",
+  "endTime": "2025-04-30T21:53:55.822Z",
+  "environment": {
+    "os": "win32",
+    "nodeVersion": "v20.11.1",
+    "puppeteerVersion": "24.7.2",
+    "playwrightVersion": "1.52.0"
+  },
+  "duration": 16.057
+}

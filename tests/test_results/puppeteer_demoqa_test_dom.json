@@ -1,0 +1,28 @@
+{
+  "tagName": "BODY",
+  "id": "error-page",
+  "className": "",
+  "childrenCount": 1,
+  "children": [
+    {
+      "tagName": "DIV",
+      "id": "",
+      "className": "wp-die-message",
+      "childrenCount": 2,
+      "children": [
+        {
+          "tagName": "P",
+          "id": "",
+          "className": "",
+          "childrenCount": 0
+        },
+        {
+          "tagName": "P",
+          "id": "",
+          "className": "",
+          "childrenCount": 1
+        }
+      ]
+    }
+  ]
+}

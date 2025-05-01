@@ -1,0 +1,52 @@
+{
+  "tagName": "BODY",
+  "id": "",
+  "className": "",
+  "childrenCount": 4,
+  "children": [
+    {
+      "tagName": "SCRIPT",
+      "id": "",
+      "className": "",
+      "childrenCount": 0
+    },
+    {
+      "tagName": "DIV",
+      "id": "root",
+      "className": "",
+      "childrenCount": 3,
+      "children": [
+        {
+          "tagName": "UL",
+          "id": "nav-access",
+          "className": "a11y-nav",
+          "childrenCount": 2
+        },
+        {
+          "tagName": "DIV",
+          "id": "",
+          "className": "page-wrapper  category-home standard-page ",
+          "childrenCount": 3
+        },
+        {
+          "tagName": "FOOTER",
+          "id": "nav-footer",
+          "className": "page-footer",
+          "childrenCount": 1
+        }
+      ]
+    },
+    {
+      "tagName": "SCRIPT",
+      "id": "hydration",
+      "className": "",
+      "childrenCount": 0
+    },
+    {
+      "tagName": "DIV",
+      "id": "a11y-status-message",
+      "className": "",
+      "childrenCount": 0
+    }
+  ]
+}

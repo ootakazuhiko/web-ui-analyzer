@@ -22,6 +22,7 @@ captures_pw/
 
 # テスト結果
 coverage/
+tests/test_results/
 
 # エディタ設定ファイル
 .vscode/

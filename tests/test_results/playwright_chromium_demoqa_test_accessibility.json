@@ -1,0 +1,14 @@
+{
+  "role": "WebArea",
+  "name": "WordPress › Error",
+  "children": [
+    {
+      "role": "text",
+      "name": "There has been a critical error on this website."
+    },
+    {
+      "role": "link",
+      "name": "Learn more about troubleshooting WordPress."
+    }
+  ]
+}
